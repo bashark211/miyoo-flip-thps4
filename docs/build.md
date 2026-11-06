@@ -64,3 +64,11 @@ python3 -m unittest discover -s tests -v
 The handheld screenshots/gameplay evidence use the selected tested runtime.
 A successful source build alone does not validate every PC executable or every
 fresh-card configuration. This remains an experimental release.
+
+A temporary freshly formatted prefix was initialized on the handheld with the
+public launcher's first-boot code, without replacing the established prefix.
+It advanced from loading to rendered College gameplay, including HUD, FPS and
+CPU temperature. This checks prefix bootstrapping against the retained tested
+runtime; it is not a second independently provisioned handheld/card test.
+The actual 181-file built kit and game image also passed a host installation
+check, including executable permission preservation.
