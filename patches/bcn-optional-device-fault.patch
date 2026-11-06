@@ -1,0 +1,15 @@
+diff --git a/src/bcn_layer.cpp b/src/bcn_layer.cpp
+index 78d4247..2a363c4 100644
+--- a/src/bcn_layer.cpp
++++ b/src/bcn_layer.cpp
+@@ -730,6 +730,10 @@ BCnLayer_CreateDevice(VkPhysicalDevice physicalDevice,
+ 
+     auto queriedFaultFeatures = CheckForFaultSupport(instance, physicalDevice);
+     bool hasFaultSupport = queriedFaultFeatures.deviceFault;
++    // Box86 lacks this optional diagnostic API; preserve normal GPU error returns.
++    if (const char* disabled = std::getenv("BCN_DISABLE_DEVICE_FAULT")) {
++        if (std::atoi(disabled)) hasFaultSupport = false;
++    }
+ 
+     VkBaseOutStructure* ext = (VkBaseOutStructure*)createInfo.pNext;
+     VkPhysicalDevice8BitStorageFeaturesKHR* app8Bit = nullptr;

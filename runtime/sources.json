@@ -1,0 +1,55 @@
+{
+  "weston": {
+    "filename": "weston_pkg_0.2.squashfs",
+    "sha256": "0bccaeebc11296bb1fe4278c9677cb82965c5a04bcd63745fa09d78228bc1a93",
+    "urls": [
+      "https://github.com/PortsMaster/PortMaster-New/releases/download/2025-07-24_0745/weston_pkg_0.2.squashfs"
+    ]
+  },
+  "wine": {
+    "filename": "wine-8.21-x86.tar.xz",
+    "sha256": "7cc729b178f69b613fc6435f75c6f4cff422cd2ba3314854ba587560cc0598f6",
+    "urls": [
+      "https://github.com/Kron4ek/Wine-Builds/releases/download/8.21/wine-8.21-x86.tar.xz"
+    ]
+  },
+  "mali": {
+    "filename": "libmali-g52-g29p1-armhf.so",
+    "sha256": "6c7ac4257032ade760091164d4957b248ebcd64dd1ef4ac4b51a8985333f504c",
+    "urls": [
+      "https://raw.githubusercontent.com/JeffyCN/mirrors/3e59dab3b69ab4e1dc2b0e6271a4174c108b9335/lib/arm-linux-gnueabihf/libmali-bifrost-g52-g29p1.so"
+    ]
+  },
+  "dxvk": {
+    "filename": "pandxvk-v01-merged.zip",
+    "sha256": "d9f174737ebf5074f841ce579cbb5a28326a427916c6ae95a65587baf1ba28c3",
+    "urls": [
+      "https://github.com/isygold/panDXVK/releases/download/v01/merged.zip"
+    ]
+  },
+  "git": {
+    "box86": [
+      "https://github.com/ptitSeb/box86.git",
+      "bb716a2a6576cc06da811bf55e31e2f6f03b7596"
+    ],
+    "wsi": [
+      "https://github.com/ginkage/vulkan-wsi-layer.git",
+      "40cfec09d0e2d42c5e1f2642cf4cba11e7008112"
+    ],
+    "bcn": [
+      "https://github.com/leegao/bcn_layer.git",
+      "50993a2d51772567de9c36de4d523652773f0899"
+    ],
+    "headers": [
+      "https://github.com/KhronosGroup/Vulkan-Headers.git",
+      "8d6039a455a7ecc7d2a592ff97f62db4e59b70bf"
+    ]
+  },
+  "slang": {
+    "filename": "slang-2026.10.2-linux-x86_64.tar.gz",
+    "sha256": "e1993c89fe6eb9fce148672ac2b633af1578e413c41b730be446dd8be251376b",
+    "urls": [
+      "https://github.com/shader-slang/slang/releases/download/v2026.10.2/slang-2026.10.2-linux-x86_64.tar.gz"
+    ]
+  }
+}
