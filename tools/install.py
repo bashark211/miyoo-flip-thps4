@@ -29,7 +29,7 @@ def atomic_copy(source,destination):
 def install(sd,runtime,game):
     sd=Path(sd).resolve();runtime,m=validate_runtime(runtime);game=validate_image(game)
     if not (sd/'spruce/flip').is_dir() or not (sd/'Roms/ports').is_dir():raise ValueError('Choose the mounted Spruce SD root, not a laptop system directory')
-    lab=sd/'Persistent/thps4-lab';marker=lab/'runtime-manifest.json';image=lab/'thps4-complete-xz.squashfs'
+    lab=safe_destination(sd,'Persistent/thps4-lab');marker=lab/'runtime-manifest.json';image=lab/'thps4-complete-xz.squashfs'
     if lab.exists() and any(lab.iterdir()) and not marker.exists():raise ValueError('Existing experiment runtime found. Back it up and move it aside before a fresh install')
     if image.exists() and sha(image)!=sha(game):raise ValueError('A different game image already exists. Move it aside before installing another game build')
     lab.mkdir(parents=True,exist_ok=True)
@@ -50,7 +50,7 @@ def install(sd,runtime,game):
             if total!=536870912:raise ValueError('Invalid empty prefix template')
             os.replace(temp,prefix)
         finally:Path(temp).unlink(missing_ok=True)
-    port=sd/'Roms/ports/thps4';(port/'saves').mkdir(parents=True,exist_ok=True)
+    port=safe_destination(sd,'Roms/ports/thps4');(port/'saves').mkdir(parents=True,exist_ok=True)
     if not (port/'config.cfg').exists():atomic_copy(runtime/'config.cfg',port/'config.cfg')
     if not image.exists():atomic_copy(game,image)
     atomic_copy(runtime/'THPS4.sh',sd/'Roms/ports/THPS4.sh');(sd/'Roms/ports/THPS4.sh').chmod(0o755)

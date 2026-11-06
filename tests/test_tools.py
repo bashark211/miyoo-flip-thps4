@@ -36,6 +36,11 @@ class Tools(unittest.TestCase):
             self.assertEqual(save.read_bytes(),b'career');self.assertEqual(config.read_bytes(),b'custom')
             (runtime/'THPS4.sh').write_bytes(b'corrupted')
             with self.assertRaises(ValueError):installer.install(sd,runtime,image)
+    def test_sd_symlink_escape(self):
+        with tempfile.TemporaryDirectory() as t:
+            p=Path(t);sd=p/'sd';outside=p/'outside';outside.mkdir();(sd/'Persistent').mkdir(parents=True)
+            (sd/'Persistent/thps4-lab').symlink_to(outside,target_is_directory=True)
+            with self.assertRaises(ValueError):safe_destination(sd,'Persistent/thps4-lab')
     def test_path_escape(self):
         for path in ['/tmp/out','../out','a/../../out']:
             with self.assertRaises(ValueError):safe_destination('/tmp/runtime',path)

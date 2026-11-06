@@ -72,3 +72,6 @@ CPU temperature. This checks prefix bootstrapping against the retained tested
 runtime; it is not a second independently provisioned handheld/card test.
 The actual 181-file built kit and game image also passed a host installation
 check, including executable permission preservation.
+
+All 58 pinned Debian dependency artifacts also passed a fresh network download
+and SHA256 check independently of the seeded build cache at publication time.
