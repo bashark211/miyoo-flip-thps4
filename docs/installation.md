@@ -74,3 +74,16 @@ once. Save compatibility with other game versions/devices is not established.
 To uninstall, exit and shut down, preserve the save/config folder if desired,
 then remove `Roms/ports/THPS4.sh`, `Roms/ports/thps4/` and
 `Persistent/thps4-lab/`. No system driver replacement is required.
+
+## Tested executable fingerprint
+
+The retained game's `Skate4.exe` SHA256 is:
+
+```text
+3713c4c51bd67811bd902ad6a22a18bcafe7edfadb71f1444939b52626cb58e0
+```
+
+This identifies the tested input, not a claim that every other release fails.
+The packer validates an x86 PE executable and records your own fingerprint;
+it does not rewrite the executable. Please include that hash in compatibility
+reports instead of attaching game files.
