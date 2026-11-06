@@ -1,5 +1,8 @@
 # Build and provenance
 
+The validated build host is **x86_64 Linux**. The pinned Slang compiler is an
+x86_64 Linux binary; ARM-host and macOS/Windows builds are not validated.
+
 The builder downloads pinned release artifacts and Debian packages, verifies
 SHA256, uses a pinned Slang compiler to generate the BCn shaders,
 and cross-compiles Box86, the WSI layer, the BCn layer and the native

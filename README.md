@@ -33,7 +33,7 @@ corner; a small CPU-temperature counter appears underneath it.
 ## Setup
 
 See [the installation guide](docs/installation.md). Build the runtime from
-pinned upstream components, package your own installed Game directory, then
+pinned upstream components on x86_64 Linux, package your own installed Game directory, then
 copy the generated files to the SD card. Original game files are never
 uploaded by the tools. The installer preserves existing saves and prefixes.
 

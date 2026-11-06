@@ -7,7 +7,7 @@ Other PC executable revisions may work, but the tested installation does not
 establish compatibility with every release. Install your own copy on your PC
 first. This project provides no game downloads, keys or activation bypass.
 
-## 1. Build the runtime on Linux
+## 1. Build the runtime on x86_64 Linux
 
 Install Python 3.11+, Git and Podman (or Docker), then:
 
