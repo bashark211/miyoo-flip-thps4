@@ -44,6 +44,23 @@ Only the exact fixture was intercepted. Small-copy timings improved; large
 correct menus/HUD/textures and playable College. The later msvcrt hotspot was
 much smaller, but an isolated FPS benefit has **not** been established.
 
+## Remaining work in the busy capture
+
+The later busy-spot capture attributed about 32.168% to d3d9, 20.354% to
+dsound and 13.018% to native Mali CPU work. The main thread had about 18.51
+sampled CPU seconds in d3d9 and 17.49 in game code; the command thread had
+25.11 in d3d9 and 17.65 in Mali. Audio used about 28.61 CPU seconds on its own
+thread. Those make translation/command overhead and the audio mixer sensible
+future profiling targets, not proven safe toggles or proof of a GPU bottleneck.
+A main-thread PMU capture counted roughly 71.49 billion cycles and 24.74 billion
+instructions (IPC ~0.35) over 53.33 seconds of counted execution.
+
+Read-only Box86 JIT snapshots supported only partial detailed guest attribution
+(roughly 8–10% at the block-only level); 19 guest-span inconsistencies appeared
+in the original roughly 58,000-block set. Treat detailed guest-function rankings
+as exploratory. The native full-frame copy identification and the separately
+validated memmove interception do not depend on that speculative ranking.
+
 ## Better future comparisons
 
 Keep the same executable, save, stationary location, camera and settings.
