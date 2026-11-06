@@ -21,6 +21,7 @@ def validate_game(folder):
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('game');p.add_argument('--output',required=True);p.add_argument('--include-movies',action='store_true');a=p.parse_args()
     folder,exe=validate_game(a.game);out=Path(a.output).resolve()
+    if out.is_relative_to(folder): raise SystemExit('Choose an output outside the source game directory')
     if out.exists(): raise SystemExit('Output already exists; choose a new file')
     out.parent.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='thps4-own-game-') as temp:

@@ -13,6 +13,8 @@ class Tools(unittest.TestCase):
             p=Path(t);game=p/'Game';(game/'Data').mkdir(parents=True);(game/'Data/level.dat').write_bytes(b'asset')
             exe=bytearray(128);exe[:2]=b'MZ';struct.pack_into('<I',exe,60,64);exe[64:68]=b'PE\0\0';struct.pack_into('<H',exe,68,0x14c);(game/'skate4.exe').write_bytes(exe)
             (game/'Save').mkdir();(game/'Save/private').write_text('personal');(game/'config.cfg').write_text('personal config');(game/'d3d9.dll').write_text('old override')
+            bad=subprocess.run([sys.executable,str(ROOT/'tools/pack-game.py'),str(game),'--output',str(game/'nested/image.squashfs')],capture_output=True)
+            self.assertNotEqual(bad.returncode,0);self.assertFalse((game/'nested').exists())
             image=p/'game.squashfs';subprocess.run([sys.executable,str(ROOT/'tools/pack-game.py'),str(game),'--output',str(image)],check=True,stdout=subprocess.DEVNULL)
             extracted=p/'extracted';subprocess.run(['unsquashfs','-d',str(extracted),str(image)],check=True,stdout=subprocess.DEVNULL)
             self.assertEqual((game/'Save/private').read_text(),'personal');self.assertTrue((extracted/'Skate4.exe').is_file());self.assertFalse((extracted/'Save/private').exists());self.assertEqual((extracted/'config.cfg').stat().st_size,0);self.assertFalse((extracted/'d3d9.dll').exists());self.assertEqual((extracted/'Data/level.dat').read_bytes(),b'asset')
